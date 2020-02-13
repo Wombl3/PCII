@@ -6,7 +6,9 @@ import java.util.Random;
 import view.Affichage;
 
 public class Parcours {
-	//DECLARATION VARIABLES
+	
+	/* --- DECLARATION DE VARIABLES --- */
+	
 	private ArrayList<Point> route = new ArrayList<Point>();//va contenir les points de la route
 	
 	
@@ -21,7 +23,7 @@ public class Parcours {
 	
 	private int position = 0;//la position de la moto, c egalement ce qu'on utilise pour le score
 	private int incrPos = 10;//vitesse de base du jeu
-	//FIN DECLARATION
+
 	
 	/** Constructeur intialisant les attributs de la classe (remplissage des premiers points de la route) */
 	public Parcours() {

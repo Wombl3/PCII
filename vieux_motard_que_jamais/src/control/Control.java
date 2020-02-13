@@ -10,16 +10,23 @@ import view.Affichage;
 
 
 public class Control implements KeyListener{
+	
+	/* --- DECLARATION DE VARIABLES --- */
+	
 	private Affichage myAffichage;
 	private Etat myEtat;
-
-	/** Constructeur initialisant les variables globales de la classe */
+	
+	/* --- CONSTRUCTEURS --- */
+	
+	/** Constructeur initialisant les variables globales de la classe
+	 * Lance egalement le thread Avancer */
 	public Control(Affichage a, Etat e) {
 		this.myAffichage = a;
 		this.myEtat = e;
 		(new Avancer(e, a)).start();
 	}
 
+	
 	@Override
 	public void keyTyped(KeyEvent e) {
 	}

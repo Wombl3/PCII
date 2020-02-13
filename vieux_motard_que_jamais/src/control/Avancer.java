@@ -4,9 +4,16 @@ import model.Etat;
 import view.Affichage;
 
 public class Avancer extends Thread {
+	
+	/* --- DECLARATION DE VARIABLES --- */
+	
 	public static final int sleepTime = 50;//duree ou le Thread va etre en Sleep
 	private Etat etatA;
 	private Affichage affichageA;
+	
+	/* --- CONSTRUCTEURS --- */
+	
+	/** Constructeur initialisant les variables globales de la classe */
 	
 	public Avancer(Etat e, Affichage a) {
 		etatA = e;
