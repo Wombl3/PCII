@@ -10,7 +10,7 @@ public class Parcours {
 	/* --- DECLARATION DE VARIABLES --- */
 	
 	private ArrayList<Point> route = new ArrayList<Point>();//va contenir les points de la route
-	
+	public static final int largeurRoute = Affichage.ecranL/7;//largeur de la route
 	
 	private static Random rand = new Random();//rand utilisé lors de la generation
 	private int distRouteMax = (Affichage.ecranH - Affichage.horiY)/2;//distance max avant un nouveau tournant (VERT)
@@ -19,13 +19,12 @@ public class Parcours {
 	private int absRouteMin = Affichage.ecranH/4;//distance min de la taille du virage (HORI)
 	private int absRouteMax = Affichage.ecranH * 3/4 - absRouteMin;//distance max de la taille du virage (HORI)
 	
-	public static final int largeurRoute = Affichage.ecranL/7;//largeur de la route
-	
 	private int position = 0;//la position de la moto, c egalement ce qu'on utilise pour le score
 	private int incrPos = 10;//vitesse de base du jeu
 
+	/* --- CONSTRUCTEURS --- */
 	
-	/** Constructeur intialisant les attributs de la classe (remplissage des premiers points de la route) */
+	/** Constructeur intialisant les attributs de la classe (remplissage des premiers points visibles de la route) */
 	public Parcours() {
 		 //CREATION PTS 1
 		 int x = (Affichage.ecranL - largeurRoute)/2;
@@ -41,9 +40,11 @@ public class Parcours {
 		 route.add(new Point(x, y));
 	}
 	
+	/* --- GETTERS --- */
+	
 	/** Methode permettant une generation infinie de points
 	 * en prenant en compte "l'avancee" du joueur 
-	 * @return Un ArrayList de points: ArrayList<Point>*/
+	 * @return Un ArrayList de points: notre route*/
 	public ArrayList<Point> getParcours() {
 		ArrayList<Point> routeBis = new ArrayList<Point>();
 		
@@ -62,20 +63,21 @@ public class Parcours {
 			int last = route.get(route.size()-1).y;//on recupere la valeur du dernier point
 			int x = rand.nextInt(absRouteMax) + absRouteMin;
 			int y = last - (rand.nextInt(distRouteMax) + distRouteMin);//on creer un nouveau point en prenant en compte la distance
+			
 			//AJOUT AUX 2 ARRAYLIST
 			route.add(new Point(x, y));
 			routeBis.add(new Point(x, y));
-		
 		}
-	
 		return routeBis;
 	}
 	
 	/** Methode renvoyant la valeur de la position 
-	 * @return int*/
+	 * @return un int: la position*/
 	public int getPos() {
 		return position;
 	}
+	
+	/* --- PROCEDURES --- */
 	
 	/** Procedure incrementant la position, simulant une avancee du joueur */
 	public void incrPos() {

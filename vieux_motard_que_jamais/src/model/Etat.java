@@ -11,8 +11,7 @@ public class Etat {
 	
 	/* --- DECLARATION DE VARIABLES --- */
 	
-	private int motoX = 0;//position de notre moto (pas literalement, notre moto reste au centre,
-	//mais ca sert a gerer le deplacement/gauche droite)
+	private int motoX = 0;//position de notre moto (pas literalement, notre moto reste au centre, mais ca sert a gerer le deplacement/gauche droite)
 	private int motoY = Affichage.motoY;//position de notre moto (meme fonctionnement que dessus)
 
 	
@@ -20,33 +19,41 @@ public class Etat {
 	private static final int vitY = 10;//vitesse de deplacement haut/bas
 	
 	Parcours parcours = new Parcours();
-	
-	private ArrayList<Point> route = parcours.getParcours();
+	private ArrayList<Point> route = parcours.getParcours();//ArrayList contenant les points utilises pour dessiner la route
 	
 	/* --- GETTERS --- */
 	
-	/* Methode renvoyant la position de notre moto
-	 * @return motoX, un int */
+	/** Methode renvoyant la position de notre moto en x
+	 *@return  motoX, un int */
 	public int getMotoX() {
 		return motoX;
 	}
 	
+	/** Methode renvoyant la position de notre moto en y
+	 *@return  motoY, un int */
 	public int getMotoY() {
 		return motoY;
 	}
 	
-	public void setMotoX(int x) {
-		motoX = motoX + x;
-	}
-	
-	public void setMotoY(int y) {
-		motoX = motoY + y;
-	}
-	
+	/** Methode renvoyant notre route generee aleatoirement
+	 *@return  route, un ArrayList de Points */
 	public ArrayList<Point> getRoute() {
 		return route;
 	}
 	
+	/* --- PROCEDURES --- */
+	
+	/** Procedure permettant de simuler un deplacement gauche/droite de notre affichage (utilisee dans Control.java) */
+	public void setMotoX(int x) {
+		motoX = motoX + x;
+	}
+	
+	/** Procedure permettant de simuler un deplacement haut/bas de notre affichage (utilisee dans Control.java) */
+	public void setMotoY(int y) {
+		motoX = motoY + y;
+	}
+	
+	/** Procedure permettant de simuler un avancement de la route (defile du haut vers le bas) */
 	public void avancer() {
 		parcours.incrPos();
 		route = parcours.getParcours();
